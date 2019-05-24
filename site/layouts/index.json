@@ -1,0 +1,6 @@
+[{{$elements := where .Pages ".URL" "ne" "/search/"}}
+{{$pLen := sub (len $elements) 1}}{{range $index, $element := $elements}}
+    {{ partial "json/page.json" $element}}
+    {{if ne $pLen $index}},{{end}}
+{{end}}
+]

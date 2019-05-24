@@ -1,9 +1,12 @@
 {{ define "main" }}
+    <div class="d-flex justify-content-center">
+        <div class="d-flex flex-column align-items-center">
+            <h1 class="text-center">The Grilled Cheese Award</h1>
+            <img src="/images/Grilled_Cheese_Trophy.webp" class="rounded-circle w-50">
+        </div>
+    </div>
 
-<h1>Hugo with Webpack, Sass, and PostCSS</h1>
 
-<h3>Hooray 🎉 - you've built this with <a href="https://github.com/netlify/victor-hugo">Victor-Hugo</a>!</h3>
-
-<a href="{{ "/tech" | relURL }}">Check out the tech</a>
+    {{ partial "nav" . }}
 
 {{ end }}

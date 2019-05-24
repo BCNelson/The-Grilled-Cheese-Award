@@ -1,0 +1,37 @@
+{{ define "main" }}
+{{ partial "nav" . }}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            {{ .Content }}
+        </div>
+    </div>
+</div>
+
+
+
+{{range (where .Paginator.Pages ".Params.winner" true)}}
+<h1>The Winner</h1>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">{{.Title}}</h1>
+        <p class="lead">{{.Description}}</p>
+        <a href="{{.URL}}" class="btn btn-primary">To Article</a>
+    </div>
+</div>
+{{end}}
+
+<h1>Honerable Mentions</h1>
+<div id="results" class="card-group">
+    {{range (where .Paginator.Pages ".Params.winner" false)}}
+    <div class="card col-3-md col-4-sm">
+        <div class="card-body">
+            <h4 class="card-title">{{.Title}}</h4>
+            <p class="card-text">{{.Description}}</p>
+            <a href="{{.URL}}" class="btn btn-primary">To Article</a>
+        </div>
+    </div>
+    {{end}}
+</div>
+
+{{end}}

@@ -7,6 +7,7 @@ const common = require("./webpack.common");
 
 module.exports = merge(common, {
   mode: "development",
+  
 
   output: {
     filename: "[name].js",
@@ -17,7 +18,7 @@ module.exports = merge(common, {
     port: process.env.PORT || 3000,
     contentBase: path.join(process.cwd(), "./dist"),
     watchContentBase: true,
-    stats: "none",
+    stats: "errors-only",
     quiet: false,
     open: true,
     historyApiFallback: {

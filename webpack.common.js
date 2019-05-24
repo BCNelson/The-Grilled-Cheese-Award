@@ -6,12 +6,14 @@ const AssetsPlugin = require("assets-webpack-plugin");
 
 module.exports = {
   entry: {
-    main: path.join(__dirname, "src", "index.js")
+    main: path.join(__dirname, "src", "index.js"),
+    search: path.join(__dirname, "src", "search.js")
   },
 
   output: {
     path: path.join(__dirname, "dist")
   },
+  
 
   module: {
     rules: [

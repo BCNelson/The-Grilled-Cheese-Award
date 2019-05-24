@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="{{ $.Site.Language.Lang }}">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  {{.Hugo.Generator}}
+  <base
+    href="{{ if getenv "CONTEXT" }}{{ cond (eq "production" (getenv "CONTEXT")) (getenv "URL") (getenv "DEPLOY_PRIME_URL") }}{{ else }}{{ $.Site.BaseURL }}{{ end }}">
+  <title>{{ $.Site.Title }}</title>
+
+  {{ $stylesheet := .Site.Data.webpack.main }}
+  {{ with $stylesheet.css }}
+  <link href="{{ relURL . }}" rel="stylesheet">
+  {{ end }}
+</head>
+
+<body>
+
+  {{ partial "nav" . }}
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <div class="input-group input-group-lg">
+        <input id="searchBar" placeholder="Search" type="text" class="form-control" aria-label="Large"
+          aria-describedby="inputGroup-sizing-sm">
+      </div>
+    </div>
+  </div>
+
+  <div id="results" class="card-group"></div>
+
+
+  <script id="CardTmpl" type="text/x-jsrender">
+    <div class="card col-3-md col-4-sm">
+      <div class="card-body">
+        <h4 class="card-title">{%:title%}</h4>
+        <p class="card-text">{%:description%}</p>
+        <a href="{%:url%}" class="btn btn-primary">To Article</a>
+      </div>
+      {%if winner%}
+        <div class="card-footer">
+            <small class="text-muted">Winner</small>
+        </div>
+      {%/if%}
+    </div>
+  </script>
+
+
+
+
+
+  {{ $script := .Site.Data.webpack.search }}
+  {{ with $script.js }}
+  <script src="{{ relURL . }}"></script>
+  {{ end }}
+</body>
+
+</html>

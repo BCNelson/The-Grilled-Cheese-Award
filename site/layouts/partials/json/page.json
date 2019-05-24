@@ -1,0 +1,7 @@
+{
+    "title": {{.Title | jsonify}},
+    "text": {{.Plain | jsonify}},
+    "description": {{.Description | jsonify}},
+    "url": {{.URL | jsonify}},
+    "winner": {{.Params.winner | jsonify}}
+}
