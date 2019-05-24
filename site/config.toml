@@ -1,6 +1,4 @@
 baseurl = "/"
-languageCode = "en-us"
-languageLang = "en"
 title = "The Grilled Cheese Award"
 
 [outputs]

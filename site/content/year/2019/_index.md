@@ -1,7 +1,7 @@
 ---
 title: "2019"
 date: 2019-05-22T19:19:09-06:00
-draft: true
+draft: false
 menu: "year"
 ---
 
