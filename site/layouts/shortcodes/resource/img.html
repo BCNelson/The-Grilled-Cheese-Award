@@ -1,0 +1,36 @@
+{{$img := "*"}}
+{{$dim := "*"}}
+{{if .IsNamedParams}}
+    {{if (.Get "img")}}
+        {{$img = (.Get "img")}}
+        {{$dim = (.Get "dim")}}
+    {{else}}
+        {{errorf "No Image Given in Resource Image"}}
+    {{end}}
+{{else}}
+    {{if (.Get 0)}}
+        {{$img = (.Get 0)}}
+        {{$dim = (.Get 1)}}
+    {{else}}
+        {{errorf "No Image Given in Resource Image"}}
+    {{end}}
+{{end}}
+
+
+{{$images := $.Page.Page.Resources.ByType "image" }}
+
+{{if eq (len $images) 0}}
+    {{errorf "The page does not have any image resources: %#v" $images }}
+{{end}}
+
+{{range $images.Match $img}}
+    {{if $dim}}
+        {{with .Resize $dim}}
+            <img src="{{.Permalink}}">
+        {{end}}
+    {{else}}
+        <img src="{{.Permalink}}">
+    {{end}}
+{{else}}
+    {{errorf "No resources match: %#v" $images}}
+{{end}}

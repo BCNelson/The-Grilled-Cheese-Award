@@ -1,0 +1,14 @@
+{{ define "main" }} {{ $section := .Site.GetPage "section" .Section }}
+  {{ partial "nav" . }}
+  {{range .Parent.Resources.Match "docs/**" }}
+    <p>{{.}}</p>
+  {{else}}
+    <p>No Resources Found</p>
+    {{printf "%#v" .}}
+    {{printf "%#v" .Parent}}
+  {{end}}
+
+  <article class="content">
+    <main>{{- .Content -}}</main>
+  </article>
+{{ end }}
